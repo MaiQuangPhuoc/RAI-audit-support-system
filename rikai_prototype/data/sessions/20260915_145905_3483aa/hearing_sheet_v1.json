@@ -1,0 +1,42 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "契約形態 (Contract type)",
+      "answer": ""
+    },
+    {
+      "question": "契約番号／案件番号 (Contract number / Project number)",
+      "answer": ""
+    },
+    {
+      "question": "回答記入日 (Date of response)",
+      "answer": ""
+    },
+    {
+      "question": "回答者部署・氏名 (Responding department and name)",
+      "answer": ""
+    },
+    {
+      "question": "チェックリスト項目ごとに、以下のいずれかの記号で回答してください：〇（実施している）、△（不十分または検討中）、✕（実施していない）、－（業務上関係なく対象外）。✕、△、－ を選択した項目については、調達先コメント欄に理由を記入してください。",
+      "answer": ""
+    },
+    {
+      "question": "回答期限は2026年10月30日（金）正午までです。この期限までにご回答いただけますか？",
+      "answer": ""
+    },
+    {
+      "question": "ご回答方法：本メールへの返信、または別メールでファイル送付の場合はその旨をご返信ください。",
+      "answer": ""
+    },
+    {
+      "question": "ご提供いただく情報の取扱いについて、目的はIT調達先の情報セキュリティ対策状況確認とリスク管理のみであり、適切に管理されますことをご承諾いただけますか？",
+      "answer": ""
+    },
+    {
+      "question": "お問い合わせ先（大和ライフネクスト株式会社 デジタル推進部 ITガバナンス課）への連絡が必要な場合、メールアドレスは sfa_is_governance@dln.jp です。ご確認ください。",
+      "answer": ""
+    }
+  ],
+  "notes": "Nội dung dựa trên email yêu cầu đối tác trả lời \"IT調達先セキュリティチェックリスト\" của công ty 大和ライフネクスト株式会社 (Ngày 14/07/2026). Yêu cầu đối tác cung cấp thông tin cơ bản và trả lời các mục kiểm tra bảo mật theo các ký hiệu: 〇 (đã thực hiện), △ (không đủ / đang xem xét), ✕ (không thực hiện), － (không áp dụng). Đối với các mục được đánh dấu ✕, △, hoặc －, cần ghi lý do trong \"調達先コメント欄\". Hạn trả lời: 30/10/2026 12:00. Trả lời bằng cách trả lời email hoặc gửi file đính kèm."
+}

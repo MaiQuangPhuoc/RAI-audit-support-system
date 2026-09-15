@@ -1,0 +1,86 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "Vui lòng cung cấp mã đại lý / Partner",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp tên đại lý / Partner",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cho biết kỳ khảo sát",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá chất lượng sản phẩm (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá tình trạng sản phẩm khi nhận hàng (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá tính đúng hạn của giao hàng (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá mức độ hỗ trợ bán hàng (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá chính sách giá / chiết khấu (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá khả năng xử lý yêu cầu hoặc khiếu nại (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Đánh giá mức độ hài lòng chung (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Nếu có mục đánh dấu △ hoặc ✕, vui lòng ghi rõ lý do trong ô “Ý kiến của nhà cung cấp” (đối với Bảng 1)",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp mã đơn hàng",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp tên sản phẩm",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp quy cách đóng gói",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp số lượng",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp đơn giá",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp thành tiền",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp ngày giao hàng",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng cung cấp tình trạng giao hàng (〇/△/✕/－)",
+      "answer": ""
+    },
+    {
+      "question": "Nếu có mục đánh dấu △ hoặc ✕ trong Bảng 2, vui lòng ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý trong ô “Ý kiến của nhà cung cấp”",
+      "answer": ""
+    }
+  ],
+  "notes": "Mục đích: Đánh giá hoạt động bán hàng, chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung của nhà phân phối/Partner trong kỳ khảo sát (từ ngày 12… đến ngày 23…).\n\nHướng dẫn đánh giá ký hiệu: 〇 – Đã thực hiện/đáp ứng đầy đủ yêu cầu; △ – Chưa đầy đủ hoặc đang xem xét thực hiện; ✕ – Chưa thực hiện; － – Không áp dụng hoặc không liên quan. Nếu chọn △ hoặc ✕, Partner phải ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý trong cột “Ý kiến của nhà cung cấp”.\n\nYêu cầu: Điền đầy đủ các thông tin bắt buộc vào file Excel đính kèm, không để trống. Gửi lại file đã hoàn thành và các chứng từ liên quan trước thời hạn phản hồi cho người phụ trách."
+}

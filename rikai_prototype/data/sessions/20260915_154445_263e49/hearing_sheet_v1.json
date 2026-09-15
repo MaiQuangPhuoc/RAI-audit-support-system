@@ -1,0 +1,34 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "Chất lượng sản phẩm",
+      "answer": ""
+    },
+    {
+      "question": "Tình trạng sản phẩm khi nhận hàng",
+      "answer": ""
+    },
+    {
+      "question": "Tính đúng hạn của giao hàng",
+      "answer": ""
+    },
+    {
+      "question": "Mức độ hỗ trợ bán hàng",
+      "answer": ""
+    },
+    {
+      "question": "Chính sách giá/chiết khấu",
+      "answer": ""
+    },
+    {
+      "question": "Khả năng xử lý yêu cầu hoặc khiếu nại",
+      "answer": ""
+    },
+    {
+      "question": "Mức độ hài lòng chung",
+      "answer": ""
+    }
+  ],
+  "notes": "Mục đích: Đánh giá tình hình bán hàng và chất lượng phối hợp giữa các bên trong kỳ khảo sát (từ ngày 12… đến ngày 23…). Phạm vi khảo sát gồm 2 bảng: \n- Bảng 1 – Khảo sát độ hài lòng: Đánh giá các tiêu chí về chất lượng sản phẩm, tình trạng sản phẩm khi nhận, tính đúng hạn giao hàng, mức độ hỗ trợ bán hàng, chính sách giá/chiết khấu, khả năng xử lý yêu cầu hoặc khiếu nại, và mức độ hài lòng chung. \n- Bảng 2 – Đơn hàng nhập: Cung cấp thông tin chi tiết về các đơn hàng nước ngọt (sản phẩm, số lượng, giá trị, tình trạng giao hàng). \n\nHướng dẫn điền (Bảng 1):\n- 〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.\n- △: Chưa đầy đủ hoặc đang xem xét thực hiện (bắt buộc ghi lý do trong cột “Ý kiến của nhà cung cấp”).\n- ✕: Chưa thực hiện (bắt buộc ghi lý do).\n- －: Không áp dụng hoặc không liên quan (bắt buộc ghi lý do nếu cần).\n\nYêu cầu: Điền đầy đủ các cột trong file Excel đính kèm, không để trống các trường bắt buộc. Nếu không có dữ liệu hoặc không áp dụng, ghi rõ lý do. Gửi file đã hoàn thành cùng các tài liệu/chứng từ liên quan cho người phụ trách trước thời hạn phản hồi.\n\nThông tin liên hệ: Người phụ trách: phuoc dep trai, Email: phuoc@gmail.com, Điện thoại: 0123456789."
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "Hình thức hợp đồng (ví dụ: hợp đồng mua bán, dịch vụ, thuê bao, v.v.) là gì?",
+      "answer": ""
+    },
+    {
+      "question": "Số hợp đồng / Số dự án liên quan đến dịch vụ hoặc sản phẩm CNTT là bao nhiêu?",
+      "answer": ""
+    },
+    {
+      "question": "Ngày điền câu trả lời (dd/mm/yyyy) là ngày nào?",
+      "answer": ""
+    },
+    {
+      "question": "Phòng ban và họ tên người trả lời (người chịu trách nhiệm cung cấp thông tin) là gì?",
+      "answer": ""
+    },
+    {
+      "question": "Vui lòng trả lời toàn bộ các mục trong Bảng kiểm tra an ninh thông tin (チェックリスト) và đánh dấu mỗi mục bằng ký hiệu: 〇, △, ✕, hoặc －.",
+      "answer": ""
+    },
+    {
+      "question": "Đối với các mục được đánh dấu ✕, △ hoặc －, xin cung cấp lý do chi tiết trong cột “Ý kiến của nhà cung cấp”.",
+      "answer": ""
+    }
+  ],
+  "notes": "Yêu cầu từ Công ty TNHH Yamato Life Next (大和ライフネクスト株式会社) nhằm thu thập thông tin an ninh thông tin của nhà cung cấp dịch vụ, sản phẩm CNTT. Partner cần điền vào Sheet ② “Thông tin cơ bản” và trả lời toàn bộ mục trong Sheet ③ “Bảng kiểm tra” (チェックリスト) theo các ký hiệu: 〇 – đang thực hiện, △ – chưa đầy đủ/đang xem xét, ✕ – chưa thực hiện, － – không áp dụng. Đối với các mục có ký hiệu ✕, △ hoặc －, cần ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”. Thời hạn trả lời: trước 12:00 trưa, thứ Sáu, ngày 30/10/2026. Kết quả gửi lại qua email phản hồi."
+}

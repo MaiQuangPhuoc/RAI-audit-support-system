@@ -1,0 +1,58 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "1.0",
+      "answer": ""
+    },
+    {
+      "question": "2.0",
+      "answer": ""
+    },
+    {
+      "question": "3.0",
+      "answer": ""
+    },
+    {
+      "question": "4.0",
+      "answer": ""
+    },
+    {
+      "question": "5.0",
+      "answer": ""
+    },
+    {
+      "question": "6.0",
+      "answer": ""
+    },
+    {
+      "question": "7.0",
+      "answer": ""
+    },
+    {
+      "question": "Hướng dẫn điền",
+      "answer": ""
+    },
+    {
+      "question": "〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.",
+      "answer": ""
+    },
+    {
+      "question": "△: Chưa đầy đủ hoặc đang xem xét thực hiện.",
+      "answer": ""
+    },
+    {
+      "question": "✕: Chưa thực hiện.",
+      "answer": ""
+    },
+    {
+      "question": "－: Không áp dụng hoặc không liên quan.",
+      "answer": ""
+    },
+    {
+      "question": "Nếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”.",
+      "answer": ""
+    }
+  ],
+  "notes": ""
+}

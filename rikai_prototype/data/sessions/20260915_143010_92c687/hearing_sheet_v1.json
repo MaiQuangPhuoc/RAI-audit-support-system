@@ -1,0 +1,26 @@
+{
+  "title": "Khảo sát @tri",
+  "rows": [
+    {
+      "question": "契約形態 (Loại hợp đồng)",
+      "answer": ""
+    },
+    {
+      "question": "契約番号／案件番号 (Số hợp đồng / số dự án)",
+      "answer": ""
+    },
+    {
+      "question": "回答記入日 (Ngày ghi trả lời)",
+      "answer": ""
+    },
+    {
+      "question": "回答者部署・氏名 (Bộ phận và tên người trả lời)",
+      "answer": ""
+    },
+    {
+      "question": "チェックリスト項目ごとの回答 (Vui lòng đánh dấu cho mỗi mục kiểm tra: 〇, △, ✕, － và ghi chú nếu chọn △, ✕ hoặc －)",
+      "answer": ""
+    }
+  ],
+  "notes": "Đây là yêu cầu từ 大和ライフネクスト株式会社 (Yamato Life Next Co., Ltd.) để nhà cung cấp trả lời biểu mẫu \"IT調達先セキュリティチェックリスト\". Yêu cầu trả lời các mục trong Sheet ② \"基本情報\" (thông tin cơ bản) và Sheet ③ \"チェックリスト\" (danh sách kiểm tra). Các lựa chọn trả lời cho mỗi mục kiểm tra: 〇 (đã thực hiện), △ (không đủ/đang xem xét), ✕ (không thực hiện), － (không áp dụng). Nếu chọn △, ✕ hoặc －, phải ghi lý do trong ô \"調達先コメント欄\". Thời hạn trả lời: 30/10/2026 (giờ 12:00). Trả lời bằng cách trả lời email này hoặc gửi file đính kèm. Thông tin trả lời sẽ chỉ được sử dụng cho mục đích kiểm tra an ninh thông tin và quản lý rủi ro của công ty, được bảo mật. Liên hệ: sfa_is_governance@dln.jp."
+}
