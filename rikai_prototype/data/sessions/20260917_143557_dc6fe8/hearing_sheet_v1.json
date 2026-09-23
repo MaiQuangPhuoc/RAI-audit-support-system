@@ -1,0 +1,92 @@
+{
+  "title": "Khảo sát VendorA",
+  "tables": [
+    {
+      "sheet_name": "Nuoc_ngot.pdf",
+      "notes": "Ký hiệu | Ý nghĩa\n〇 | Đã thực hiện/đáp ứng đầy đủ yêu cầu\n△ | Chưa đầy đủ hoặc đang xem xét thực hiện\n✕ | Chưa thực hiện\n－ | Không áp dụng hoặc không liên quan\n\nLưu ý quan trọng: Nếu có mục được đánh dấu ✕ hoặc △, vui lòng ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý nếu có trong cột “Ý kiến của nhà cung cấp”.",
+      "rows": [
+        {
+          "question": "Vui lòng điền đầy đủ thông tin vào Bảng 1 – Khảo sát độ hài lòng: Đánh giá chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung.",
+          "answer": ""
+        },
+        {
+          "question": "Vui lòng điền đầy đủ thông tin vào Bảng 2 – Đơn hàng nhập: Cung cấp thông tin về các đơn hàng nước ngọt trong kỳ khảo sát, bao gồm sản phẩm, số lượng, giá trị và tình trạng giao hàng.",
+          "answer": ""
+        },
+        {
+          "question": "Vui lòng gửi lại file Excel đã hoàn thành và các tài liệu hoặc chứng từ liên quan nếu được yêu cầu bổ sung.",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q1",
+      "notes": "Hướng dẫn điền\n〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.\n△: Chưa đầy đủ hoặc đang xem xét thực hiện.\n✕: Chưa thực hiện.\n－: Không áp dụng hoặc không liên quan.\n\nNếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”.",
+      "rows": [
+        {
+          "question": "1.0 Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+          "answer": ""
+        },
+        {
+          "question": "2.0 Một số thùng bị móp trong quá trình vận chuyển",
+          "answer": ""
+        },
+        {
+          "question": "3.0 Có 1/10 đơn hàng giao chậm 1 ngày",
+          "answer": ""
+        },
+        {
+          "question": "4.0 Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+          "answer": ""
+        },
+        {
+          "question": "5.0 Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+          "answer": ""
+        },
+        {
+          "question": "6.0 Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+          "answer": ""
+        },
+        {
+          "question": "7.0 Hài lòng",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "notes": "Ký hiệu đánh giá : điền O cho đồng ý , X cho không đồng ý và ? nếu cần làm rõ mặt hàng",
+      "rows": [
+        {
+          "question": "1.0 nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "2.0 Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "3.0 cơm heo",
+          "answer": ""
+        },
+        {
+          "question": "4.0 sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "5.0 trò chơi nổ hũ",
+          "answer": ""
+        },
+        {
+          "question": "6.0 ánh phồng tôm bé bé",
+          "answer": ""
+        },
+        {
+          "question": "7.0 trường giang ngoại tình",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": ""
+}

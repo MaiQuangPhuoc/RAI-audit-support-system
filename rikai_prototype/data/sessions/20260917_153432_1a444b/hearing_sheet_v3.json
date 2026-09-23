@@ -1,0 +1,70 @@
+{
+  "title": "Khảo sát VendorA",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "notes": "[Ghi chú/Tiêu chí]: 〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.\n△: Chưa đầy đủ hoặc đang xem xét thực hiện.\n✕: Chưa thực hiện.\n－: Không áp dụng hoặc không liên quan.\nNếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”。",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+          "answer": "O"
+        },
+        {
+          "question": "Một số thùng bị móp trong quá trình vận chuyển",
+          "answer": "△"
+        },
+        {
+          "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+          "answer": "O"
+        },
+        {
+          "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+          "answer": "O"
+        },
+        {
+          "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+          "answer": "△"
+        },
+        {
+          "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+          "answer": "△"
+        },
+        {
+          "question": "Hài lòng",
+          "answer": "△"
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "notes": "[Ghi chú/Tiêu chí]: Ký hiệu đánh giá : điền O cho đồng ý , X cho không đồng ý và ? nếu cần làm rõ mặt hàng",
+      "rows": [
+        {
+          "question": "nước tăng lực A1",
+          "answer": "O"
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": "O"
+        },
+        {
+          "question": "Tiệc nhà hàng",
+          "answer": "?"
+        },
+        {
+          "question": "sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "Bông cải xanh",
+          "answer": "X"
+        },
+        {
+          "question": "Bánh phồng tôm bé bé",
+          "answer": "X"
+        }
+      ]
+    }
+  ],
+  "notes": "Mô tả/ghi chú CHUNG áp dụng cho TOÀN BỘ Hearing Sheet (không riêng sheet nào).Ghi chú riêng của từng sheet phải để trong tables[i].notes, KHÔNG gộp vào đây."
+}

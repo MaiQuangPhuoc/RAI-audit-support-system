@@ -1,0 +1,34 @@
+{
+  "title": "Hearing Sheet - Phiên bản chỉnh sửa",
+  "rows": [
+    {
+      "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+      "answer": ""
+    },
+    {
+      "question": "Một số thùng bị móp trong quá trình vận chuyển",
+      "answer": ""
+    },
+    {
+      "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+      "answer": ""
+    },
+    {
+      "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+      "answer": ""
+    },
+    {
+      "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+      "answer": ""
+    },
+    {
+      "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+      "answer": ""
+    },
+    {
+      "question": "Hài lòng",
+      "answer": ""
+    }
+  ],
+  "notes": "Bảng câu hỏi dựa trên các sheet q1 và q2 trong file đã cung cấp. Vui lòng điền câu trả lời vào các mục trống. (Auditor yêu cầu làm rõ file nguồn: các câu hỏi được trích từ sheet q1 và q2 của file cung cấp)."
+}

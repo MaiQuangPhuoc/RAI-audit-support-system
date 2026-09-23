@@ -1,0 +1,62 @@
+{
+  "title": "Khảo sát @12",
+  "rows": [
+    {
+      "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+      "answer": ""
+    },
+    {
+      "question": "Một số thùng bị móp trong quá trình vận chuyển",
+      "answer": ""
+    },
+    {
+      "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+      "answer": ""
+    },
+    {
+      "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+      "answer": ""
+    },
+    {
+      "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+      "answer": ""
+    },
+    {
+      "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+      "answer": ""
+    },
+    {
+      "question": "Hài lòng",
+      "answer": ""
+    },
+    {
+      "question": "nước tăng lực A1 (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "Mì tôm chay (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "cơm heo (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "sữa milo x4 cho con người (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "trò chơi nổ hũ (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "ánh phồng tôm bé bé (đồng ý nhập)",
+      "answer": ""
+    },
+    {
+      "question": "trường giang ngoại tình (đồng ý nhập)",
+      "answer": ""
+    }
+  ],
+  "notes": "Phiếu khảo sát bán hàng nước ngọt được gửi từ đơn vị Auditor (Phuoc_dep_trai) đến đối tác (Tri_dep_trai/nhà phân phối/Partner) nhằm đánh giá tình hình bán hàng, chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung trong kỳ khảo sát từ ngày 12… đến ngày 23…. Đối tác cần điền đầy đủ thông tin vào các bảng trong file Excel đính kèm, sử dụng ký hiệu đánh giá (〇, △, ✕, －) cho bảng 1 và ký hiệu O/X/? cho bảng 2, đồng thời ghi rõ nguyên nhân trong cột “Ý kiến của nhà cung cấp” nếu chọn △ hoặc ✕. Kết quả sẽ được sử dụng để tổng hợp, phân tích và lập báo cáo. Thông tin liên hệ: Người phụ trách phuoc dep trai, email phuoc@gmail.com, điện thoại 0123456789."
+}

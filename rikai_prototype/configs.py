@@ -15,13 +15,14 @@ class EnvConfig(BaseSettings):
     groq_api_key: Optional[str] = None
     openai_api_key: Optional[str] = None
     openrouter_api_key: Optional[str] = None
+    anthropic_api_key: Optional[str] = None
 
     # tavily/weather giữ optional luôn cho an toàn
     api_key_tavily: Optional[str] = None
     api_key_weather: Optional[str] = None
 
     # ── chọn provider đang dùng ──
-    api_provider: Literal["openai", "groq", "openrouter"] = "groq"
+    api_provider: Literal["openai", "groq", "openrouter", "anthropic"] = "anthropic"
 
     model: str = ""
     embedding_model: str = ""
@@ -61,5 +62,5 @@ MAX_UPLOAD_MB = 20
 
 # from src.app_logging import setup_logging
 # setup_logging()
-# print("model",env_config.model)
+print("model",env_config.model)
 # print(env_config.openrouter_api_key)

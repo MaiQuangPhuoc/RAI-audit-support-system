@@ -1,5 +1,5 @@
 """
-LLMClient hỗ trợ groq / openai / openrouter, bật/tắt bằng cách đổi
+LLMClient hỗ trợ groq / openai / openrouter / anthropic, bật/tắt bằng cách đổi
 api_provider trong .env, không cần sửa code.
 
 Dựa trên llm.py do Auditor cung cấp — chỉ chỉnh lại import (configs.py giờ
@@ -25,8 +25,25 @@ from configs import env_config
 logger = logging.getLogger(__name__)
 
 
+
+
+
+
+import logging
+from typing import List, Optional, Union
+
+from langchain_core.messages import BaseMessage, HumanMessage
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.tools import BaseTool
+from pydantic import BaseModel
+
+from configs import env_config
+
+logger = logging.getLogger(__name__)
+
+
 class LLMClient:
-    """LLM client hỗ trợ groq / openai / openrouter, bật/tắt bằng cách
+    """LLM client hỗ trợ groq / openai / openrouter / anthropic, bật/tắt bằng cách
     đổi api_provider trong .env, không cần sửa code."""
 
     def __init__(self, model: str, api_provider: str = None):
@@ -59,22 +76,34 @@ class LLMClient:
                 base_url="https://openrouter.ai/api/v1",
             )
 
+        elif provider == "anthropic":
+            from langchain_anthropic import ChatAnthropic
+            if not env_config.anthropic_api_key:
+                raise ValueError("Thiếu ANTHROPIC_API_KEY trong .env")
+            return ChatAnthropic(
+                model=self.model,
+                api_key=env_config.anthropic_api_key,
+                max_tokens=4096,
+            )
+
         else:
             raise ValueError(f"api_provider không hỗ trợ: {provider}")
 
-    def _configure_llm(self, max_tokens, temperature, llm_tools, output_model):
+    def _configure_llm(self, max_tokens, temperature, llm_tools, output_model, structured_method=None):
         llm = self._llm.bind(max_tokens=max_tokens, temperature=temperature)
         if llm_tools:
             llm = llm.bind_tools(llm_tools)
         if output_model:
-            llm = llm.with_structured_output(output_model)
+            kwargs = {"method": structured_method} if structured_method else {}
+            llm = llm.with_structured_output(output_model, **kwargs)
         return llm
 
     def invoke_with_retries(self, prompt: ChatPromptTemplate, max_tokens=1024,
                              temperature=1, llm_tools: List[BaseTool] = None,
-                             output_model: Optional[BaseModel] = None, num_retries=1):
+                             output_model: Optional[BaseModel] = None, num_retries=1,
+                             structured_method: Optional[str] = None):
         llm_tools = llm_tools or []
-        llm = self._configure_llm(max_tokens, temperature, llm_tools, output_model)
+        llm = self._configure_llm(max_tokens, temperature, llm_tools, output_model, structured_method)
         for attempt in range(num_retries):
             try:
                 chain = prompt | llm
@@ -136,7 +165,7 @@ def call_llm(system_prompt: str, user_prompt: str, temperature: float = 0.2,
         raise RuntimeError(
             "LLM client chưa khởi tạo được. Kiểm tra .env: api_provider đang chọn là "
             f"'{env_config.api_provider}', cần có API key tương ứng "
-            "(OPENAI_API_KEY / GROQ_API_KEY / OPENROUTER_API_KEY)."
+            "(OPENAI_API_KEY / GROQ_API_KEY / OPENROUTER_API_KEY / ANTHROPIC_API_KEY)."
         )
     prompt = ChatPromptTemplate.from_messages([
         ("system", _escape_braces(system_prompt)),
@@ -177,6 +206,13 @@ def call_llm_structured(system_prompt: str, user_prompt: str, schema, temperatur
     Gọi LLM và ép trả về đúng theo `schema` (1 class Pydantic BaseModel), dùng
     tính năng structured output (output_model) có sẵn của LLMClient. Trả về
     thẳng 1 instance của schema — không cần tự parse JSON.
+
+    Một số model (đặc biệt model open-weight qua Groq/OpenRouter, VD:
+    gpt-oss) đôi khi KHÔNG tuân thủ đúng tool-calling — tự bịa tên tool khác
+    với tool đã đăng ký, gây lỗi "tool call validation failed" / "was not in
+    request.tools" từ phía provider. Khi gặp đúng lỗi này, tự động thử lại 1
+    lần bằng method="json_mode" (không dùng tool-calling, ép model trả JSON
+    thuần) — cách này ổn định hơn với các model chưa luyện kỹ tool-calling.
     """
     if llm_client is None:
         raise RuntimeError(
@@ -187,10 +223,63 @@ def call_llm_structured(system_prompt: str, user_prompt: str, schema, temperatur
         ("system", _escape_braces(system_prompt)),
         ("human", _escape_braces(user_prompt)),
     ])
-    return llm_client.invoke_with_retries(
-        prompt, max_tokens=max_tokens, temperature=temperature,
-        output_model=schema, num_retries=num_retries,
-    )
+    try:
+        return llm_client.invoke_with_retries(
+            prompt, max_tokens=max_tokens, temperature=temperature,
+            output_model=schema, num_retries=num_retries,
+        )
+    except Exception as e:
+        msg = str(e).lower()
+        tool_call_issue = (
+            "tool call validation failed" in msg
+            or "was not in request.tools" in msg
+            or "tool_use_failed" in msg
+        )
+        if not tool_call_issue:
+            raise
+        logger.warning(
+            f"Structured output qua tool-calling thất bại (model có thể không tuân thủ "
+            f"tool-calling đúng chuẩn): {str(e)[:200]}... Thử lại bằng method='json_mode'."
+        )
+        # response_format=json_object (bên dưới của method="json_mode") của nhiều provider
+        # (VD: Groq) BẮT BUỘC message phải chứa chữ "json" — prompt tiếng Việt không có
+        # sẵn chữ này nên phải thêm dòng hướng dẫn rõ ràng trước khi thử lại.
+        json_mode_prompt = ChatPromptTemplate.from_messages([
+            ("system", _escape_braces(system_prompt)),
+            ("human", _escape_braces(user_prompt) + "\n\nTrả lời CHỈ bằng một object json hợp lệ, không thêm chữ nào khác."),
+        ])
+        return llm_client.invoke_with_retries(
+            json_mode_prompt, max_tokens=max_tokens, temperature=temperature,
+            output_model=schema, num_retries=num_retries, structured_method="json_mode",
+        )
+
+
+# ---------------------------------------------------------------------------
+# Test nhanh: chạy trực tiếp file này để kiểm tra provider/model/API key
+# trong .env có hoạt động không, không cần khởi động cả Streamlit.
+#   python core/llm.py
+# ---------------------------------------------------------------------------
+# if __name__ == "__main__":
+#     print("-- RIKAI LLM test --")
+#     print(f"provider : {env_config.api_provider}")
+#     print(f"model    : {env_config.model}")
+
+#     query = "Hà Nội là thủ đô của Việt Nam, đúng hay sai? Trả lời ngắn gọn."
+#     print(f"\nQuery: {query}")
+#     try:
+#         answer = call_llm(
+#             system_prompt="Bạn là trợ lý trả lời ngắn gọn, chính xác.",
+#             user_prompt=query,
+#             temperature=0,
+#         )
+#         print(f"Trả lời: {answer}")
+#     except Exception as e:
+#         print(f"Lỗi khi gọi LLM: {e}")
+
+
+
+
+
 
 
 # ---------------------------------------------------------------------------

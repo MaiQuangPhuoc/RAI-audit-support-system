@@ -1,0 +1,36 @@
+[Sheet: q1]
+STT | Mức đánh giá/Thông tin trả lời | Ký hiệu đánh giá | Ý kiến của nhà cung cấp
+1.0 | Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng |  | 
+2.0 | Một số thùng bị móp trong quá trình vận chuyển |  | 
+3.0 | Có 1/10 đơn hàng giao chậm 1 ngày |  | 
+4.0 | Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ |  | 
+5.0 | Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm |  | 
+6.0 | Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc |  | 
+7.0 | Hài lòng |  | 
+[Sheet: a1]
+STT | Mức đánh giá/Thông tin trả lời | Ký hiệu đánh giá | Ý kiến của nhà cung cấp
+1.0 | Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng | 〇 | 1 Sản phẩm được kiểm tra khi nhập kho và đáp ứng yêu cầu chất lượng.
+2.0 | Một số thùng bị móp trong quá trình vận chuyển | △ | 2 Một số thùng hàng bị móp do quá trình vận chuyển. Partner đang phối hợp với đơn vị giao hàng để cải thiện việc sắp xếp và cố định hàng hóa.
+3.0 | Có 1/10 đơn hàng giao chậm 1 ngày | 〇 | 3 đơn hàng giao chậm do phương tiện vận chuyển gặp sự cố. Partner đề nghị theo dõi tình trạng vận chuyển trước ngày giao hàng.
+4.0 | Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ | △ | 4 viên phụ trách hỗ trợ thông tin sản phẩm và chương trình bán hàng theo yêu cầu.
+5.0 | Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm | 〇 | 5số chương trình khuyến mại được thông báo sát ngày triển khai. Partner đề nghị thông báo trước tối thiểu 7 ngày.
+6.0 | Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc | △ | 6 yêu cầu và phản ánh được tiếp nhận, xử lý trong thời gian phù hợp.
+7.0 | Hài lòng | 〇 | 7 đánh giá tích cực về chất lượng sản phẩm và sự hỗ trợ bán hàng.
+[Sheet: q2]
+STT | Mức đánh giá/Thông tin trả lời | Ký hiệu đánh giá | 
+1.0 | Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng | 〇 | 
+2.0 | Một số thùng bị móp trong quá trình vận chuyển | △ | 
+3.0 | Có 1/10 đơn hàng giao chậm 1 ngày | 〇 | 
+4.0 | Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ | △ | 
+5.0 | Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm | 〇 | 
+6.0 | Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc | △ | 
+7.0 | Hài lòng | 〇 | 
+[Sheet: a2]
+STT | Mức đánh giá/Thông tin trả lời | Ký hiệu đánh giá | Ý kiến của nhà cung cấp
+1.0 | Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng | 〇 | 1 Sản phẩm được kiểm tra khi nhập kho và đáp ứng yêu cầu chất lượng.
+2.0 | Một số thùng bị móp trong quá trình vận chuyển | △ | 2 Một số thùng hàng bị móp do quá trình vận chuyển. Partner đang phối hợp với đơn vị giao hàng để cải thiện việc sắp xếp và cố định hàng hóa.
+3.0 | Có 1/10 đơn hàng giao chậm 1 ngày | 〇 | 3 đơn hàng giao chậm do phương tiện vận chuyển gặp sự cố. Partner đề nghị theo dõi tình trạng vận chuyển trước ngày giao hàng.
+4.0 | Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ | △ | 4 viên phụ trách hỗ trợ thông tin sản phẩm và chương trình bán hàng theo yêu cầu.
+5.0 | Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm | 〇 | 5số chương trình khuyến mại được thông báo sát ngày triển khai. Partner đề nghị thông báo trước tối thiểu 7 ngày.
+6.0 | Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc | △ | 6 yêu cầu và phản ánh được tiếp nhận, xử lý trong thời gian phù hợp.
+7.0 | Hài lòng | 〇 | 7 đánh giá tích cực về chất lượng sản phẩm và sự hỗ trợ bán hàng.

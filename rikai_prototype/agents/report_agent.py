@@ -8,6 +8,8 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
     
+"""REPORT_AGENT — viết báo cáo từ Hearing Sheet đã xác nhận + góp ý Auditor.
+Chạy tốt kể cả không có Qdrant/file bổ sung (input tối thiểu: Hearing Sheet + góp ý)."""
 from core.llm import call_llm
 from core.schemas import HearingSheet
 from prompts.report_prompts import REPORT_SYSTEM_PROMPT, build_report_user_prompt
@@ -17,8 +19,12 @@ def _sheet_to_text(sheet: HearingSheet) -> str:
     lines = [f"# {sheet.title}"]
     if sheet.notes.strip():
         lines.append(f"Ghi chú: {sheet.notes}")
-    for row in sheet.rows:
-        lines.append(f"- {row.question}\n  Trả lời: {row.answer or '(chưa có)'}")
+    for table in sheet.tables:
+        lines.append(f"\n## Sheet: {table.sheet_name}")
+        if table.notes.strip():
+            lines.append(f"[Ghi chú/Tiêu chí của sheet này]: {table.notes}")
+        for row in table.rows:
+            lines.append(f"- {row.question}\n  Trả lời: {row.answer or '(chưa có)'}")
     return "\n".join(lines)
 
 

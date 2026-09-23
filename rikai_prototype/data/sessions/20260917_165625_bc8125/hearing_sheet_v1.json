@@ -1,0 +1,100 @@
+{
+  "title": "Khảo sát VendorB",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "notes": "〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.\n△: Chưa đầy đủ hoặc đang xem xét thực hiện.\n✕: Chưa thực hiện.\n－: Không áp dụng hoặc không liên quan.\nNếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột \"Ý kiến của nhà cung cấp\".",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng?",
+          "answer": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng"
+        },
+        {
+          "question": "Tình trạng vận chuyển có vấn đề gì?",
+          "answer": "Một số thùng bị móp trong quá trình vận chuyển"
+        },
+        {
+          "question": "Giao hàng có đúng hạn?",
+          "answer": "Có 1/10 đơn hàng giao chậm 1 ngày"
+        },
+        {
+          "question": "Cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ?",
+          "answer": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ"
+        },
+        {
+          "question": "Chính sách giá như thế nào?",
+          "answer": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm"
+        },
+        {
+          "question": "Các yêu cầu được phản hồi trong bao lâu?",
+          "answer": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc"
+        },
+        {
+          "question": "Mức độ hài lòng chung?",
+          "answer": "Hài lòng"
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "notes": "Ký hiệu đánh giá: điền O cho đồng ý, X cho không đồng ý và ? nếu cần làm rõ mặt hàng",
+      "rows": [
+        {
+          "question": "Nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "Tiệc nhà hàng",
+          "answer": ""
+        },
+        {
+          "question": "Sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "Bông cải xanh",
+          "answer": ""
+        },
+        {
+          "question": "Bánh phồng tôm bé bé",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "Nước ngọt",
+      "notes": "Ký hiệu đánh giá: 〇 = Đã thực hiện/đáp ứng đầy đủ yêu cầu; △ = Chưa đầy đủ hoặc đang xem xét thực hiện; ✕ = Chưa thực hiện; － = Không áp dụng hoặc không liên quan. Nếu có mục được đánh dấu ✕ hoặc △, vui lòng ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý nếu có trong cột \"Ý kiến của nhà cung cấp\".",
+      "rows": [
+        {
+          "question": "Đánh giá chất lượng sản phẩm nước ngọt",
+          "answer": ""
+        },
+        {
+          "question": "Đánh giá tình hình giao hàng",
+          "answer": ""
+        },
+        {
+          "question": "Đánh giá hỗ trợ bán hàng",
+          "answer": ""
+        },
+        {
+          "question": "Đánh giá chính sách giá",
+          "answer": ""
+        },
+        {
+          "question": "Mức độ hài lòng chung về phối hợp cung cấp nước ngọt",
+          "answer": ""
+        },
+        {
+          "question": "Cung cấp thông tin về các đơn hàng nước ngọt (sản phẩm, số lượng, giá trị, tình trạng giao hàng)",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "Khảo sát đa lĩnh vực với VendorB bao gồm: (1) Đánh giá chất lượng, giao hàng, hỗ trợ bán hàng, chính sách giá từ file hearing_sheet_question.xlsx; (2) Danh sách các mặt hàng cần nhập; (3) Khảo sát bán hàng nước ngọt từ file nuoc_ngot.pdf với yêu cầu cung cấp dữ liệu chi tiết về đơn hàng. Kỳ khảo sát: Từ ngày 12 đến ngày 23 (năm 2024). Người phụ trách: phuoc dep trai (phuoc@gmail.com, 0123456789)."
+}

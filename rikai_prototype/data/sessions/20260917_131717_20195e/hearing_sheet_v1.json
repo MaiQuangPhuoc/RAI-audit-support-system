@@ -1,0 +1,72 @@
+{
+  "title": "Khảo sát @tri",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+          "answer": ""
+        },
+        {
+          "question": "Một số thùng bị móp trong quá trình vận chuyển",
+          "answer": ""
+        },
+        {
+          "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+          "answer": ""
+        },
+        {
+          "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+          "answer": ""
+        },
+        {
+          "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+          "answer": ""
+        },
+        {
+          "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+          "answer": ""
+        },
+        {
+          "question": "Hài lòng",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "rows": [
+        {
+          "question": "nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "cơm heo",
+          "answer": ""
+        },
+        {
+          "question": "sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "trò chơi nổ hũ",
+          "answer": ""
+        },
+        {
+          "question": "ánh phồng tôm bé bé",
+          "answer": ""
+        },
+        {
+          "question": "trường giang ngoại tình",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "Phiếu khảo sát bán hàng nước ngọt nhằm đánh giá độ hài lòng về chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung, cũng như thu thập thông tin các đơn hàng nhập trong kỳ khảo sát. Các bên được yêu cầu điền ký hiệu đánh giá (〇, △, ✕, －) và ghi ý kiến nếu cần. Thông tin sẽ được sử dụng để tổng hợp, phân tích và lập báo cáo."
+}

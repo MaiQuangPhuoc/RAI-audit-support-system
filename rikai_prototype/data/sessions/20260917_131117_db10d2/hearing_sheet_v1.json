@@ -1,0 +1,72 @@
+{
+  "title": "Khảo sát @tri",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+          "answer": ""
+        },
+        {
+          "question": "Một số thùng bị móp trong quá trình vận chuyển",
+          "answer": ""
+        },
+        {
+          "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+          "answer": ""
+        },
+        {
+          "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+          "answer": ""
+        },
+        {
+          "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+          "answer": ""
+        },
+        {
+          "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+          "answer": ""
+        },
+        {
+          "question": "Hài lòng",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "rows": [
+        {
+          "question": "nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "cơm heo",
+          "answer": ""
+        },
+        {
+          "question": "sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "trò chơi nổ hũ",
+          "answer": ""
+        },
+        {
+          "question": "ánh phồng tôm bé bé",
+          "answer": ""
+        },
+        {
+          "question": "trường giang ngoại tình",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "Phiếu khảo sát bán hàng nước ngọt được gửi từ Phuoc_dep_trai/Auditor tới Tri_dep_trai/nhà phân phối/Partner. Mục tiêu đánh giá tình hình bán hàng, chất lượng phối hợp, và cung cấp thông tin các đơn hàng trong kỳ khảo sát (từ ngày 12… đến ngày 23…). Hai bảng chính: Bảng 1 – Khảo sát độ hài lòng (đánh giá chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung) và Bảng 2 – Đơn hàng nhập (thông tin đơn hàng, sản phẩm, số lượng, giá trị, tình trạng giao hàng). Các ký hiệu đánh giá: 〇 = đã thực hiện, △ = chưa đầy đủ/đang xem xét, ✕ = chưa thực hiện, － = không áp dụng. Nếu có ký hiệu △ hoặc ✕, cần ghi lý do trong cột “Ý kiến của nhà cung cấp”."
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Khảo sát VendorB",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "notes": "〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.\n△: Chưa đầy đủ hoặc đang xem xét thực hiện.\n✕: Chưa thực hiện.\n－: Không áp dụng hoặc không liên quan.\nNếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột \"Ý kiến của nhà cung cấp\".",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng, có ghi nhận lỗi nghiêm trọng không?",
+          "answer": ""
+        },
+        {
+          "question": "Tình trạng thùng sản phẩm trong quá trình vận chuyển như thế nào?",
+          "answer": ""
+        },
+        {
+          "question": "Tỷ lệ giao hàng đúng hạn như thế nào?",
+          "answer": ""
+        },
+        {
+          "question": "Cung cấp đầy đủ thông tin sản phẩm và chương trình bán hàng không?",
+          "answer": ""
+        },
+        {
+          "question": "Chính sách giá có phù hợp không? Các chương trình khuyến mãi được thông báo sớm không?",
+          "answer": ""
+        },
+        {
+          "question": "Thời gian phản hồi các yêu cầu như thế nào?",
+          "answer": ""
+        },
+        {
+          "question": "Mức độ hài lòng chung về sự phối hợp là gì?",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "notes": "Ký hiệu đánh giá: điền O cho đồng ý, X cho không đồng ý và ? nếu cần làm rõ mặt hàng",
+      "rows": [
+        {
+          "question": "Nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "Tiệc nhà hàng",
+          "answer": ""
+        },
+        {
+          "question": "Sữa Milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "Bông cải xanh",
+          "answer": ""
+        },
+        {
+          "question": "Bánh phồng tôm bé bé",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "Kỳ khảo sát: Từ ngày 12 đến ngày 23 (12/12/2024). Phạm vi khảo sát bao gồm: Bảng 1 – Khảo sát độ hài lòng về chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung; Bảng 2 – Đơn hàng nhập nước ngọt bao gồm sản phẩm, số lượng, giá trị và tình trạng giao hàng. Lưu ý: Nếu có mục được đánh dấu ✕ hoặc △, vui lòng ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý trong cột \\\"Ý kiến của nhà cung cấp\\\".\""
+}

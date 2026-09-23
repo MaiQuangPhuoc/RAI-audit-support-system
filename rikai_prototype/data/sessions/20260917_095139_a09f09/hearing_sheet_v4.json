@@ -1,0 +1,92 @@
+{
+  "title": "Hearing Sheet – Phiên bản chỉnh sửa",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "rows": [
+        {
+          "question": "1.0",
+          "answer": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng"
+        },
+        {
+          "question": "2.0",
+          "answer": "Một số thùng bị móp trong quá trình vận chuyển"
+        },
+        {
+          "question": "3.0",
+          "answer": "Có 1/10 đơn hàng giao chậm 1 ngày"
+        },
+        {
+          "question": "4.0",
+          "answer": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ"
+        },
+        {
+          "question": "5.0",
+          "answer": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm"
+        },
+        {
+          "question": "6.0",
+          "answer": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc"
+        },
+        {
+          "question": "7.0",
+          "answer": "Hài lòng"
+        },
+        {
+          "question": "Hướng dẫn điền",
+          "answer": ""
+        },
+        {
+          "question": "〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu.",
+          "answer": ""
+        },
+        {
+          "question": "△: Chưa đầy đủ hoặc đang xem xét thực hiện.",
+          "answer": ""
+        },
+        {
+          "question": "✕: Chưa thực hiện.",
+          "answer": ""
+        },
+        {
+          "question": "－: Không áp dụng hoặc không liên quan.",
+          "answer": ""
+        },
+        {
+          "question": "Nếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”.",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "rows": [
+        {
+          "question": "1.0 Đã đặt hàng sản phẩm nước tăng lực A1? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        },
+        {
+          "question": "2.0 Đã đặt hàng sản phẩm mì tôm chay? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        },
+        {
+          "question": "3.0 Đã đặt hàng sản phẩm cơm heo? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        },
+        {
+          "question": "4.0 Đã đặt hàng sản phẩm sữa milo x4 cho con người? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        },
+        {
+          "question": "5.0 Đã đặt hàng sản phẩm trường giang nấu ăn cho gia đình món cơm hến xào chua? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        },
+        {
+          "question": "6.0 Đã đặt hàng sản phẩm ánh phồng tôm bé bé? Vui lòng trả lời Có/Không và nếu Có, ghi số lượng.",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "Đã sửa lại các câu hỏi và bổ sung các mục chưa trả lời theo góp ý của Auditor. Đối với Sheet q2, câu hỏi đã được chỉnh sửa để phản ánh đúng mục đích hỏi về việc đặt hàng (Có/Không, nếu có ghi số lượng). Các câu trả lời hiện tại chưa đáp ứng yêu cầu, vui lòng cập nhật."
+}

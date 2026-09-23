@@ -1,0 +1,15 @@
+[Sheet: Khảo sát độ hài lòng]
+STT | Mã đại lý/Partner | Tên đại lý/Partner | Kỳ khảo sát | Tiêu chí đánh giá | Mức đánh giá/Thông tin trả lời | Ký hiệu đánh giá | Ý kiến của nhà cung cấp
+1.0 |  |  |  | Chất lượng sản phẩm |  |  | 
+2.0 |  |  |  | Tình trạng sản phẩm khi nhận hàng |  |  | 
+3.0 |  |  |  | Tính đúng hạn của giao hàng |  |  | 
+4.0 |  |  |  | Mức độ hỗ trợ bán hàng |  |  | 
+5.0 |  |  |  | Chính sách giá/chiết khấu |  |  | 
+6.0 |  |  |  | Khả năng xử lý yêu cầu hoặc khiếu nại |  |  | 
+7.0 |  |  |  | Mức độ hài lòng chung |  |  | 
+Hướng dẫn điền |  |  |  |  |  |  | 
+〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu. |  |  |  |  |  |  | 
+△: Chưa đầy đủ hoặc đang xem xét thực hiện. |  |  |  |  |  |  | 
+✕: Chưa thực hiện. |  |  |  |  |  |  | 
+－: Không áp dụng hoặc không liên quan. |  |  |  |  |  |  | 
+Nếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”. |  |  |  |  |  |  | 

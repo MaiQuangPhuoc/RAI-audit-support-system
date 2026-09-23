@@ -1,0 +1,74 @@
+{
+  "title": "Khảo sát @sepTay",
+  "tables": [
+    {
+      "sheet_name": "q1",
+      "notes": "Hướng dẫn điền: 〇: Đã thực hiện/đáp ứng đầy đủ yêu cầu. △: Chưa đầy đủ hoặc đang xem xét thực hiện. ✕: Chưa thực hiện. －: Không áp dụng hoặc không liên quan. Nếu chọn △ hoặc ✕, Partner bắt buộc ghi rõ lý do trong cột “Ý kiến của nhà cung cấp”.",
+      "rows": [
+        {
+          "question": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng",
+          "answer": ""
+        },
+        {
+          "question": "Một số thùng bị móp trong quá trình vận chuyển",
+          "answer": ""
+        },
+        {
+          "question": "Có 1/10 đơn hàng giao chậm 1 ngày",
+          "answer": ""
+        },
+        {
+          "question": "Được cung cấp thông tin sản phẩm và chương trình bán hàng đầy đủ",
+          "answer": ""
+        },
+        {
+          "question": "Chính sách giá phù hợp, tuy nhiên một số chương trình chưa được thông báo sớm",
+          "answer": ""
+        },
+        {
+          "question": "Các yêu cầu được phản hồi trong vòng 1–2 ngày làm việc",
+          "answer": ""
+        },
+        {
+          "question": "Hài lòng",
+          "answer": ""
+        }
+      ]
+    },
+    {
+      "sheet_name": "q2",
+      "notes": "Ký hiệu đánh giá: điền O cho đồng ý, X cho không đồng ý và ? nếu cần làm rõ mặt hàng.",
+      "rows": [
+        {
+          "question": "nước tăng lực A1",
+          "answer": ""
+        },
+        {
+          "question": "Mì tôm chay",
+          "answer": ""
+        },
+        {
+          "question": "cơm heo",
+          "answer": ""
+        },
+        {
+          "question": "sữa milo x4 cho con người",
+          "answer": ""
+        },
+        {
+          "question": "trò chơi nổ hũ",
+          "answer": ""
+        },
+        {
+          "question": "ánh phồng tôm bé bé",
+          "answer": ""
+        },
+        {
+          "question": "trường giang ngoại tình",
+          "answer": ""
+        }
+      ]
+    }
+  ],
+  "notes": "PHIẾU KHẢO SÁT BÁN HÀNG NƯỚC NGỌT\\nNgày tạo: 12/12/2024\\nĐơn vị gửi: Phuoc_dep_trai/Auditor\\nĐơn vị nhận: Tri_dep_trai/nhà phân phối/Partner\\nV/v: Đề nghị phối hợp cung cấp thông tin phục vụ khảo sát hoạt động bán hàng.\\nPhạm vi khảo sát: Bảng 1 – Khảo sát độ hài lòng (đánh giá chất lượng sản phẩm, giao hàng, hỗ trợ bán hàng, chính sách giá và mức độ hài lòng chung); Bảng 2 – Đơn hàng nhập (thông tin các đơn hàng nước ngọt).\\nYêu cầu thực hiện: Điền đầy đủ thông tin vào file Excel đính kèm, đánh giá mức độ hài lòng, cung cấp thông tin chính xác, không để trống các trường bắt buộc, ghi rõ lý do nếu không áp dụng.\\nKý hiệu đánh giá chung: 〇 Đã thực hiện/đáp ứng đầy đủ yêu cầu; △ Chưa đầy đủ hoặc đang xem xét thực hiện; ✕ Chưa thực hiện; － Không áp dụng hoặc không liên quan.\\nNếu mục được đánh dấu ✕ hoặc △, ghi rõ nguyên nhân, tình trạng hiện tại và kế hoạch xử lý trong cột “Ý kiến của nhà cung cấp”.\\nHồ sơ gửi lại: File Excel đã điền, kèm tài liệu/chứng từ nếu yêu cầu."
+}

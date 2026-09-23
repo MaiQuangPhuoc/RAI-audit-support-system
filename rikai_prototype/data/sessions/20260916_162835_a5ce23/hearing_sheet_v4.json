@@ -1,0 +1,34 @@
+{
+  "title": "Hearing Sheet @tri - Phiên bản cập nhật",
+  "rows": [
+    {
+      "question": "Chất lượng sản phẩm",
+      "answer": "Sản phẩm đạt chất lượng, không ghi nhận lỗi nghiêm trọng."
+    },
+    {
+      "question": "Tình trạng sản phẩm khi nhận hàng",
+      "answer": "Một số thùng bị móp trong quá trình vận chuyển."
+    },
+    {
+      "question": "Tính đúng hạn của giao hàng",
+      "answer": "Có 1 đơn hàng giao chậm 1 ngày."
+    },
+    {
+      "question": "Mức độ hỗ trợ bán hàng",
+      "answer": "Được cung cấp đầy đủ thông tin sản phẩm và chương trình bán hàng."
+    },
+    {
+      "question": "Chính sách giá/chiết khấu",
+      "answer": "Chính sách giá phù hợp, nhưng một số chương trình được thông báo chưa sớm."
+    },
+    {
+      "question": "Khả năng xử lý yêu cầu hoặc khiếu nại",
+      "answer": "Các yêu cầu thường được phản hồi trong vòng 1–2 ngày làm việc."
+    },
+    {
+      "question": "Mức độ hài lòng chung",
+      "answer": "Hài lòng."
+    }
+  ],
+  "notes": ""
+}
