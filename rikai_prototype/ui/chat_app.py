@@ -22,6 +22,7 @@ GIỚI HẠN:
   phỏng dáng tin nhắn, không phải màu nền như Zalo thật. Muốn giống 100%
   cần custom component (React) - ngoài phạm vi prototype.
 """
+import asyncio
 import glob
 import os
 from datetime import datetime
@@ -33,7 +34,7 @@ import pandas as pd
 import streamlit as st
 
 from agents.analysis_agent import analyze_partner_answers
-from agents.hearing_sheet_agent import create_hearing_sheet, revise_hearing_sheet, summarize_understanding
+from agents.hearing_sheet_agent import create_and_review_hearing_sheet, revise_hearing_sheet
 from agents.report_agent import generate_report
 from core.schemas import HearingSheet, SheetTable
 from ingestion.intake import extract_files_text, parse_tagged_partners
@@ -41,7 +42,9 @@ from storage import local_store
 from ui import session_state as ss
 from ui.render import (
     render_analysis_md,
+    render_chunk_reviews_md,
     render_hearing_sheet_md,
+    render_hearing_sheet_summary_md,
     render_report_md,
     render_understanding_md,
     split_numbered_points,
@@ -345,21 +348,28 @@ def _render_auditor_tab():
                     st.session_state.original_file_path = file_paths[0] if is_single_xlsx else None
                     st.session_state.hearing_sheet_modified = False
 
-                    with st.spinner("Đang bóc tách file và tạo Hearing Sheet..."):
-                        sheet, warnings = create_hearing_sheet(
-                            file_paths, content, title=f"Khảo sát {', '.join(tagged)}"
+                    with st.spinner("Đang bóc tách file, tạo Hearing Sheet và phân tích song song từng bảng..."):
+                        sheet, warnings, chunk_reviews, summary, summary_error = asyncio.run(
+                            create_and_review_hearing_sheet(
+                                file_paths, content, title=f"Khảo sát {', '.join(tagged)}"
+                            )
                         )
                         st.session_state.hearing_sheet_history.append(sheet)
                         local_store.save_hearing_sheet_json(sheet, session_id, version=1)
-                        understanding = summarize_understanding(sheet)
+                        st.session_state.chunk_reviews = chunk_reviews
+                        st.session_state.hearing_sheet_summary = summary
+                        st.session_state.hearing_sheet_summary_error = summary_error
+                        st.session_state.hearing_sheet_warnings = warnings
 
                     reply = render_hearing_sheet_md(sheet, "(v1)")
                     if warnings:
-                        reply += "\n\n**Cảnh báo:**\n" + "\n".join(f"- {w}" for w in warnings)
-                    reply += "\n\n---\n" + render_understanding_md(understanding)
+                        reply += "\n\n**Cảnh báo lúc bóc tách:**\n" + "\n".join(f"- {w}" for w in warnings)
+                    reply += "\n\n---\n" + render_hearing_sheet_summary_md(summary, summary_error)
 
                     ss.add_message("assistant", reply)
-                    st.session_state.understanding_points = split_numbered_points(understanding)
+                    # open_questions đã là list[str] có cấu trúc sẵn từ LLM — không cần
+                    # split_numbered_points() (tách chuỗi bằng regex) như cách cũ nữa.
+                    st.session_state.understanding_points = summary.open_questions if summary else []
                     ss.set_step(ss.STEP_HEARING_SHEET_REVIEW)
                     st.rerun()
 

@@ -211,3 +211,23 @@ class ChunkReview:
     raw_text: str                        # = chunk.text, hiển thị nguyên trạng
     interpretation: ChunkInterpretation | None   # None nếu chunk này lỗi khi gọi LLM
     error: str = ""                      # lý do lỗi, nếu có
+
+
+class HearingSheetSummary(BaseModel):
+    """Tổng hợp cách hiểu TOÀN BỘ Hearing Sheet — do LLM sinh ra 1 LẦN DUY NHẤT,
+    dựa trên diễn giải của TẤT CẢ chunk đã phân tích thành công (không phải dữ
+    liệu thô gốc), không suy diễn thêm ngoài các diễn giải đã có."""
+    overall_understanding: str = Field(
+        description="Tóm tắt Agent hiểu khảo sát này về mục đích, phạm vi và các nhóm nội dung chính, "
+                    "dựa trên diễn giải của từng bảng/chunk đã có — không thêm thông tin ngoài đó."
+    )
+    fields_for_partner_summary: list[str] = Field(
+        default_factory=list,
+        description="Gộp và loại trùng các trường/cột cần Partner điền, tổng hợp từ fields_for_partner "
+                    "của tất cả chunk."
+    )
+    open_questions: list[str] = Field(
+        default_factory=list,
+        description="Gộp các điểm chưa rõ ràng cần Auditor xác nhận trước khi gửi Partner, tổng hợp từ "
+                    "unclear_points của tất cả chunk (bỏ qua chunk có unclear_points rỗng)."
+    )

@@ -21,15 +21,30 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
     
-from core.llm import call_llm, call_llm_structured
-from core.schemas import AnalysisResult, HearingSheet, SessionMemory
+import asyncio
+
+from core.llm import call_llm, call_llm_structured, acall_llm_structured
+from core.schemas import AnalysisResult, ChunkInterpretation, ChunkReview, HearingSheet, HearingSheetSummary, SessionMemory
+from core.chunking import DEFAULT_MAX_ROWS_PER_CHUNK, SheetChunk, split_into_sheet_chunks
 from core.text_render import hearing_sheet_to_text
 from ingestion import xlsx_extractor
 from ingestion.intake import extract_files_text
 from ingestion.restructure import restructure_to_hearing_sheet
-from prompts.hearing_sheet_prompts import REVISE_SYSTEM_PROMPT, SUMMARY_SYSTEM_PROMPT
+from prompts.hearing_sheet_prompts import (
+    REVISE_SYSTEM_PROMPT,
+    SUMMARY_SYSTEM_PROMPT,
+    INTERPRETATION_SYSTEM_PROMPT,
+    build_interpretation_user_prompt,
+    HEARING_SHEET_SUMMARY_SYSTEM_PROMPT,
+    build_hearing_sheet_summary_user_prompt,
+)
 
 _XLSX_EXTS = (".xlsx", ".xlsm")
+
+# TODO: chuyển vào configs.py nếu project đã/sẽ có field tương ứng — tạm
+# hardcode ở đây vì chưa được cung cấp nội dung configs.py để biết field nào
+# đã có sẵn.
+MAX_CONCURRENT_INTERPRET = 3
 
 
 def create_hearing_sheet(file_paths: list[str], content: str, title: str) -> tuple[HearingSheet, list[str]]:
@@ -109,3 +124,108 @@ def revise_hearing_sheet(
     if not new_sheet.title:
         new_sheet.title = previous_sheet.title
     return new_sheet
+
+
+# ---------------------------------------------------------------------------
+# Pipeline chunk-based: diễn giải song song từng chunk (core.chunking.SheetChunk)
+# rồi tổng hợp 1 lần cuối cùng. KHÔNG sinh lại HearingSheet — chỉ sinh diễn
+# giải đi kèm dữ liệu gốc để UI hiển thị song song (data thô + phân tích).
+# ---------------------------------------------------------------------------
+
+async def _interpret_chunk(
+    chunk: SheetChunk,
+    auditor_context: str,
+    semaphore: asyncio.Semaphore,
+) -> ChunkReview:
+    async with semaphore:
+        try:
+            user_prompt = build_interpretation_user_prompt(chunk.text, auditor_context)
+            result: ChunkInterpretation = await acall_llm_structured(
+                INTERPRETATION_SYSTEM_PROMPT, user_prompt, schema=ChunkInterpretation,
+                temperature=0.2, num_retries=3, retry_temperature_step=-0.1,
+            )
+            return ChunkReview(
+                sheet_name=chunk.sheet_name,
+                row_offset=chunk.row_offset,
+                part_label=chunk.part_label,
+                raw_text=chunk.text,
+                interpretation=result,
+            )
+        except Exception as e:
+            return ChunkReview(
+                sheet_name=chunk.sheet_name,
+                row_offset=chunk.row_offset,
+                part_label=chunk.part_label,
+                raw_text=chunk.text,
+                interpretation=None,
+                error=str(e),
+            )
+
+
+async def interpret_hearing_sheet(
+    chunks: list[SheetChunk],
+    auditor_context: str = "",
+) -> list[ChunkReview]:
+    """Phân tích song song từng chunk (tối đa MAX_CONCURRENT_INTERPRET request
+    cùng lúc — xem giải thích cơ chế Semaphore ở nơi đã trao đổi). KHÔNG raise
+    nếu 1 chunk lỗi — trả đủ list, chunk lỗi có interpretation=None kèm error,
+    để UI cảnh báo rõ thay vì âm thầm thiếu dữ liệu."""
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT_INTERPRET)
+    tasks = [_interpret_chunk(c, auditor_context, semaphore) for c in chunks]
+    return await asyncio.gather(*tasks)
+
+
+async def build_hearing_sheet_review(
+    chunks: list[SheetChunk],
+    auditor_context: str = "",
+) -> tuple[list[ChunkReview], HearingSheetSummary | None, str]:
+    """Toàn bộ luồng 'hiểu Hearing Sheet' theo pipeline chunk-based:
+    1) Phân tích song song từng chunk -> list[ChunkReview]
+    2) Tổng hợp 1 LẦN DUY NHẤT (không song song), CHỈ từ các chunk phân tích
+       THÀNH CÔNG -> HearingSheetSummary
+
+    Trả về: (chunk_reviews đầy đủ cho UI hiển thị chi tiết + cảnh báo chunk lỗi,
+    summary hoặc None nếu tổng hợp lỗi/không có chunk nào thành công, thông báo
+    lỗi tổng hợp nếu có)."""
+    chunk_reviews = await interpret_hearing_sheet(chunks, auditor_context)
+
+    succeeded = [r for r in chunk_reviews if r.interpretation is not None]
+    if not succeeded:
+        return chunk_reviews, None, "Tất cả chunk đều lỗi khi phân tích — không đủ dữ liệu để tổng hợp."
+
+    try:
+        user_prompt = build_hearing_sheet_summary_user_prompt(succeeded, auditor_context)
+        summary: HearingSheetSummary = await acall_llm_structured(
+            HEARING_SHEET_SUMMARY_SYSTEM_PROMPT, user_prompt, schema=HearingSheetSummary,
+            temperature=0.2, num_retries=2,
+        )
+        return chunk_reviews, summary, ""
+    except Exception as e:
+        return chunk_reviews, None, f"Lỗi khi tổng hợp: {e}"
+
+
+async def create_and_review_hearing_sheet(
+    file_paths: list[str],
+    content: str,
+    title: str,
+    max_rows_per_chunk: int = DEFAULT_MAX_ROWS_PER_CHUNK,
+) -> tuple[HearingSheet, list[str], list[ChunkReview], HearingSheetSummary | None, str]:
+    """Hàm điều phối đầu-cuối, dùng cho UI gọi 1 lần duy nhất khi Auditor tạo
+    Hearing Sheet lần đầu:
+    1) create_hearing_sheet(...) -> HearingSheet (bóc tách thật, KHÔNG qua LLM
+       nếu Auditor chỉ đính kèm XLSX — xem nguyên tắc ở đầu file)
+    2) split_into_sheet_chunks(...) -> list[SheetChunk]
+    3) build_hearing_sheet_review(chunks, auditor_context=content) -> phân tích
+       song song từng chunk + tổng hợp 1 lần cuối
+
+    `content` (mô tả/yêu cầu khảo sát Auditor gõ trực tiếp — AuditorIntake.content)
+    được dùng làm auditor_context, truyền vào MỌI lời gọi diễn giải chunk lẫn bước
+    tổng hợp, để LLM hiểu đúng bối cảnh Auditor đang muốn khảo sát gì.
+
+    Trả về đủ mọi thứ UI cần hiển thị: HearingSheet gốc, warnings lúc bóc tách,
+    chunk_reviews (data thô + diễn giải để hiển thị song song, kèm chunk lỗi nếu
+    có), summary tổng hợp (hoặc None nếu lỗi), và thông báo lỗi tổng hợp nếu có."""
+    sheet, warnings = create_hearing_sheet(file_paths, content, title)
+    chunks = split_into_sheet_chunks(sheet, max_rows_per_chunk=max_rows_per_chunk)
+    chunk_reviews, summary, summary_error = await build_hearing_sheet_review(chunks, auditor_context=content)
+    return sheet, warnings, chunk_reviews, summary, summary_error

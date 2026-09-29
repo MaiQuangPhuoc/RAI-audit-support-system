@@ -131,3 +131,103 @@ một cách tường minh). KHÔNG được:
 - Xoá các dòng bị đánh dấu "bat_thuong" trừ khi Auditor xác nhận đó thực sự
   là lỗi cần xoá — mặc định chỉ nêu lại rõ hơn để Partner tự xác nhận, không
   tự ý loại bỏ dữ liệu."""
+
+# ===========================================================================
+# Prompt MỚI cho pipeline chunk-based (song song từng chunk + tổng hợp 1 lần)
+# — dùng bởi agents/hearing_sheet_agent.py: interpret_hearing_sheet() và
+# build_hearing_sheet_review(). Khác với RESTRUCTURE/REVISE ở trên (những
+# prompt đó SINH LẠI dữ liệu), 2 prompt dưới đây KHÔNG được sửa/sinh lại
+# columns/rows — chỉ được viết diễn giải đi kèm dữ liệu gốc.
+# ===========================================================================
+
+INTERPRETATION_SYSTEM_PROMPT = """Bạn hỗ trợ Auditor trong hệ thống RIKAI.
+Nhiệm vụ: đọc 1 phần dữ liệu (1 bảng hoặc 1 lô dòng của 1 bảng) trong Hearing
+Sheet sắp gửi cho Partner, và DIỄN GIẢI ý nghĩa của phần dữ liệu đó — KHÔNG
+được sửa, KHÔNG được tạo lại dữ liệu, chỉ được viết thêm phần giải thích đi
+kèm để Auditor xem song song với dữ liệu gốc.
+
+Dữ liệu bạn nhận được đã ở dạng bảng Markdown (cột + dòng), có thể kèm ghi
+chú/tiêu chí đánh giá riêng của bảng đó (nếu có), và có thể kèm bối cảnh
+chung Auditor mô tả khi tạo khảo sát này (nếu có).
+
+Trả lời đúng 3 điều sau:
+1. understanding: Bảng/phần bảng này đang hỏi về điều gì, mục đích của các
+   câu hỏi là gì, áp dụng cho đối tượng/hạng mục nào — CHỈ dựa trên tên cột,
+   nội dung dòng, và ghi chú/tiêu chí đã cho. KHÔNG suy diễn thêm thông tin
+   ngoài dữ liệu, KHÔNG tự thêm kiến thức chuyên ngành không có trong nguồn.
+2. fields_for_partner: liệt kê tên các cột (ĐÚNG NGUYÊN VĂN như trong dữ
+   liệu) hiện đang trống ở phần lớn/tất cả các dòng trong lô này — đây là
+   dấu hiệu cột đó là chỗ Partner cần điền. KHÔNG liệt kê cột nhận diện/mã
+   mục (đã có giá trị do Auditor điền sẵn).
+3. unclear_points: nêu điểm mơ hồ/thiếu rõ ràng NẾU có cơ sở rõ từ dữ liệu
+   (VD: ký hiệu không có giải thích đi kèm, tiêu chí đánh giá chưa nêu rõ
+   cách chấm). Để TRỐNG nếu không có gì bất thường — KHÔNG tự bịa vấn đề để
+   có nội dung trả lời.
+
+Nguyên tắc bắt buộc:
+- Không tự tạo dữ liệu, không tự đoán ý nghĩa ký hiệu nếu không có giải
+  thích đi kèm.
+- Đây là Hearing Sheet CHƯA gửi Partner, CHƯA có câu trả lời — nhiệm vụ của
+  bạn CHỈ là hiểu và diễn giải câu hỏi/cấu trúc, KHÔNG phải phân tích hay
+  đánh giá câu trả lời (đó là việc của AGENT_ANALYSIS ở bước khác, sau khi
+  Partner đã trả lời)."""
+
+
+def build_interpretation_user_prompt(chunk_text: str, auditor_context: str = "") -> str:
+    parts = []
+    if auditor_context.strip():
+        parts.append(f"## Bối cảnh chung Auditor mô tả khi tạo khảo sát này\n{auditor_context.strip()}")
+    parts.append(f"## Dữ liệu cần diễn giải\n{chunk_text}")
+    parts.append("Hãy diễn giải phần dữ liệu trên theo đúng 3 điều đã nêu trong hướng dẫn.")
+    return "\n\n".join(parts)
+
+
+HEARING_SHEET_SUMMARY_SYSTEM_PROMPT = """Bạn hỗ trợ Auditor trong hệ thống RIKAI.
+Bạn nhận được danh sách diễn giải (đã có sẵn, do bước trước sinh ra) cho
+TỪNG bảng/phần bảng trong 1 Hearing Sheet — mỗi mục gồm: tên sheet, ý
+nghĩa/mục đích bảng đó, các cột cần Partner điền, và điểm chưa rõ ràng (nếu
+có).
+
+Nhiệm vụ: tổng hợp các diễn giải này thành 1 bức tranh chung cho TOÀN BỘ
+Hearing Sheet, để Auditor đọc lướt trước khi xem chi tiết từng bảng.
+
+CHỈ được dùng thông tin có trong các diễn giải đã cho — KHÔNG được suy diễn
+thêm về dữ liệu gốc, KHÔNG tự thêm nhận định mới ngoài phạm vi các diễn
+giải này.
+
+3 phần cần tạo ra:
+1. overall_understanding: tóm tắt mục đích chung, phạm vi (gồm những nhóm
+   nội dung chính nào) của khảo sát này — dựa trên việc gộp ý nghĩa của các
+   bảng đã diễn giải.
+2. fields_for_partner_summary: gộp toàn bộ danh sách cột cần Partner điền
+   từ tất cả bảng, loại bỏ trùng lặp.
+3. open_questions: gộp toàn bộ điểm chưa rõ ràng từ các bảng có nêu — bỏ
+   qua bảng không có điểm chưa rõ nào."""
+
+
+def build_hearing_sheet_summary_user_prompt(succeeded_reviews: list, auditor_context: str = "") -> str:
+    """succeeded_reviews: list[ChunkReview] đã có interpretation (không None).
+    Import ChunkReview ở nơi gọi, không import vào đây để tránh vòng lặp import
+    (prompts -> core.schemas -> ...)."""
+    from core.chunking import chunk_label  # dùng chung hàm này (ChunkReview có cùng field sheet_name/part_label)
+
+    parts = []
+    if auditor_context.strip():
+        parts.append(f"## Bối cảnh chung Auditor mô tả khi tạo khảo sát này\n{auditor_context.strip()}")
+
+    review_lines = []
+    for r in succeeded_reviews:
+        review_lines.append(f"### {chunk_label(r)}")
+        review_lines.append(f"Hiểu: {r.interpretation.understanding}")
+        if r.interpretation.fields_for_partner:
+            review_lines.append(f"Cần Partner điền: {', '.join(r.interpretation.fields_for_partner)}")
+        if r.interpretation.unclear_points.strip():
+            review_lines.append(f"Điểm chưa rõ: {r.interpretation.unclear_points.strip()}")
+        review_lines.append("")
+
+    parts.append("## Diễn giải từng bảng/phần bảng đã có\n" + "\n".join(review_lines))
+    parts.append(
+        "Hãy tổng hợp thành overall_understanding, fields_for_partner_summary, "
+        "open_questions theo đúng hướng dẫn."
+    )
+    return "\n\n".join(parts)
