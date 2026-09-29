@@ -1,14 +1,20 @@
 """
 Tái cấu trúc text thô (đã bóc tách từ file + content Auditor nhập) thành
 HearingSheet có cấu trúc, bằng cách gọi LLM với structured output
-(schema = HearingSheet). Đây là bước quan trọng nhất: dữ liệu càng sạch,
-LLM ở các bước sau càng ít hiểu sai.
+(schema = HearingSheet).
+
+LƯU Ý: đây là đường đi FALLBACK, chỉ được gọi khi KHÔNG thể bóc tách trực
+tiếp bằng code (có file PDF, hoặc Auditor chỉ nhập text không kèm file XLSX).
+Khi Auditor chỉ đính kèm XLSX, hearing_sheet_agent.create_hearing_sheet()
+dùng thẳng ingestion.xlsx_extractor.extract_structured() — KHÔNG qua LLM,
+KHÔNG qua module này — để đảm bảo giữ đúng 100% cấu trúc gốc.
 """
-import os
-import sys
+
+import sys , os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
+
     
 from core.llm import call_llm_structured
 from core.schemas import HearingSheet

@@ -1,15 +1,10 @@
-import os
-import os
-import sys
+"""Render HearingSheet / AnalysisResult thành Markdown dễ đọc trong chat."""
+import re
+import sys , os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
-
-
-
-"""Render HearingSheet / AnalysisResult thành Markdown dễ đọc trong chat."""
-import re
-
+    
 from core.schemas import AnalysisResult, HearingSheet
 
 _NUMBERED_POINT_RE = re.compile(r'(?:(?<=\n)|^)\s*(?:\(?\d+[\.\)．]|[-•])\s+')
@@ -22,22 +17,27 @@ def render_hearing_sheet_md(sheet: HearingSheet, version_label: str = "") -> str
         lines.append(f"*{sheet.notes}*")
 
     if not sheet.tables:
-        lines.append("\n_Chưa có bảng câu hỏi nào._")
+        lines.append("\n_Chưa có bảng nào._")
         return "\n".join(lines)
 
     for table in sheet.tables:
         lines.append(f"\n#### 📑 Sheet: {table.sheet_name}")
+        lines.append("")  # dòng trống: tách heading khỏi khối tiếp theo
         if table.notes.strip():
             lines.append(f"> 📌 **Ghi chú/Tiêu chí:** {table.notes}")
-        if not table.rows:
-            lines.append("_Sheet này chưa có câu hỏi nào._")
+            lines.append("")  # dòng trống: tách blockquote khỏi bảng, nếu không
+            # markdown sẽ hiểu nhầm các dòng bảng là phần tiếp theo của blockquote
+            # và hiện nguyên văn "| col1 | col2 |" thay vì render thành bảng thật.
+        if not table.columns or not table.rows:
+            lines.append("_Sheet này chưa có dữ liệu._")
             continue
-        lines.append("| Câu hỏi | Câu trả lời |")
-        lines.append("| --- | --- |")
+        cols = table.columns
+        lines.append("| " + " | ".join(cols) + " |")
+        lines.append("| " + " | ".join(["---"] * len(cols)) + " |")
         for row in table.rows:
-            q = row.question.replace("\n", " ").replace("|", "/")
-            a = (row.answer or "").replace("\n", " ").replace("|", "/")
-            lines.append(f"| {q} | {a} |")
+            cells = [str(row.get(c, "")).replace("\n", " ").replace("|", "/") for c in cols]
+            lines.append("| " + " | ".join(cells) + " |")
+        lines.append("")  # dòng trống sau bảng, tách khỏi sheet tiếp theo
     return "\n".join(lines)
 
 
@@ -47,7 +47,7 @@ def render_analysis_md(result: AnalysisResult) -> str:
     if result.issues:
         lines.append("\n**Vấn đề phát hiện được:**")
         for issue in result.issues:
-            line = f"- **[{issue.issue_type}]** {issue.question}: {issue.description}"
+            line = f"- **[{issue.issue_type}]** ({issue.sheet_name}) {issue.item_ref}: {issue.description}"
             if issue.suggestion:
                 line += f"\n  - _Đề xuất: {issue.suggestion}_"
             lines.append(line)

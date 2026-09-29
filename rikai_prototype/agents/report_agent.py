@@ -8,12 +8,13 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
     
+
 """REPORT_AGENT — viết báo cáo từ Hearing Sheet đã xác nhận + góp ý Auditor.
 Chạy tốt kể cả không có Qdrant/file bổ sung (input tối thiểu: Hearing Sheet + góp ý)."""
 from core.llm import call_llm
 from core.schemas import HearingSheet
+from core.text_render import hearing_sheet_to_text
 from prompts.report_prompts import REPORT_SYSTEM_PROMPT, build_report_user_prompt
-
 
 def _sheet_to_text(sheet: HearingSheet) -> str:
     lines = [f"# {sheet.title}"]
@@ -26,6 +27,9 @@ def _sheet_to_text(sheet: HearingSheet) -> str:
         for row in table.rows:
             lines.append(f"- {row.question}\n  Trả lời: {row.answer or '(chưa có)'}")
     return "\n".join(lines)
+
+
+
 
 
 def generate_report(
@@ -44,7 +48,7 @@ def generate_report(
         )
 
     user_prompt = build_report_user_prompt(
-        hearing_sheet_text=_sheet_to_text(hearing_sheet),
+        hearing_sheet_text=hearing_sheet_to_text(hearing_sheet),
         auditor_notes=notes,
         extra_files_text=extra_files_text,
     )

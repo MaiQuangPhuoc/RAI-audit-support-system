@@ -59,7 +59,7 @@ def extract_text(file_path: str) -> str:
 
     return "\n\n".join(pages_text)
 
-# if __name__ == "__main__":
-#     input_path = r"D:\PHUOC\RAI_LLM\rikai_prototype2\rikai_prototype\data\input\data_llm2.pdf"
+if __name__ == "__main__":
+    input_path = r"D:\PHUOC\RAI_LLM\rikai_prototype2\rikai_prototype\data\input\pdf_data_llm.pdf"
 
-#     print(extract_text(input_path))
+    print(extract_text(input_path))

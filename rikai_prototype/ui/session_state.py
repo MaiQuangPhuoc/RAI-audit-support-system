@@ -1,6 +1,10 @@
 """State machine luồng nghiệp vụ RIKAI trong 1 phiên Streamlit."""
 import streamlit as st
-
+import sys , os
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+    
 from core.schemas import SessionMemory
 
 STEP_INTAKE = "INTAKE"
@@ -22,6 +26,11 @@ def init_state():
         "partner_sent_at": {},           # {partner_name: timestamp lúc gửi} — để lọc file trả lời cũ
         "partner_names": {"a": "VendorA", "b": "VendorB"},  # Tên 2 Partner giả lập (đổi được ở mỗi tab)
         "uploaded_docs": [],             # list[{"name": str, "path": str}] — tài liệu gốc Auditor đính kèm
+        "original_file_path": None,      # Đường dẫn file XLSX gốc DUY NHẤT (nếu chỉ upload 1 file XLSX,
+                                          # không kèm PDF) — dùng để gửi bản sao y hệt khi chưa sửa gì.
+        "hearing_sheet_modified": False, # True ngay khi Auditor góp ý hoặc tự sửa tay lần đầu tiên
+        "understanding_points": [],      # list[str] — từng điểm trong "Cách Agent hiểu nội dung",
+                                          # để Auditor trả lời riêng từng điểm ngay trên UI thay vì gõ hết vào chat
         "hearing_sheet_history": [],   # list[HearingSheet]
         "analysis_history": [],        # list[AnalysisResult]
         "report_history": [],          # list[str] markdown

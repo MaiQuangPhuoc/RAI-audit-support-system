@@ -3,22 +3,12 @@ Bước Intake: nhận content + partner + file từ Auditor, chuẩn hoá thàn
 AuditorIntake, và bóc tách text thô từ từng file đính kèm (PDF/XLSX).
 """
 import os
-import os
-import sys
+import sys , os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-
-
-
-
-"""
-Bước Intake: nhận content + partner + file từ Auditor, chuẩn hoá thành
-AuditorIntake, và bóc tách text thô từ từng file đính kèm (PDF/XLSX).
-"""
-import os
-
+    
 from core.schemas import AuditorIntake
 from ingestion import pdf_extractor, xlsx_extractor
 
